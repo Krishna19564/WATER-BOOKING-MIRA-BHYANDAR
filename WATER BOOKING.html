@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mira-Bhayandar Water Tanker Booking System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-tint"></i>
+                <h1>Mira-Bhayandar Water Supply</h1>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#book" class="nav-link">Book Tanker</a>
+                <a href="#track" class="nav-link">Track Booking</a>
+                <a href="#status" class="nav-link">Live Status</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Transparent & Accountable Water Delivery</h2>
+                <p>Track your bookings in real-time, verify delivery timelines, and ensure fair distribution</p>
+                <button class="cta-btn" onclick="scrollToSection('book')">
+                    <i class="fas fa-plus"></i> Book Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="book" class="booking-section">
+        <div class="container">
+            <h2>Book Water Tanker</h2>
+            <form id="bookingForm" class="booking-form">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Full Name</label>
+                    <input type="text" id="customerName" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-mobile-alt"></i> Phone Number</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-map-marker-alt"></i> Area</label>
+                        <select id="area" required>
+                            <option value="">Select Area</option>
+                            <option value="Mira Road">Mira Road</option>
+                            <option value="Bhayandar East">Bhayandar East</option>
+                            <option value="Bhayandar West">Bhayandar West</option>
+                            <option value="Penkar Pada">Penkar Pada</option>
+                            <option value="Kashimira">Kashimira</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-home"></i> Address</label>
+                        <input type="text" id="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-hashtag"></i> Building/Flat No.</label>
+                        <input type="text" id="flatNo" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-cube"></i> Tanker Size (KL)</label>
+                        <select id="tankerSize" required>
+                            <option value="">Select Size</option>
+                            <option value="4">4 KL (₹800)</option>
+                            <option value="6">6 KL (₹1200)</option>
+                            <option value="10">10 KL (₹1800)</option>
+                            <option value="12">12 KL (₹2100)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-calendar-alt"></i> Preferred Date</label>
+                        <input type="date" id="deliveryDate" required>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Booking
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Track Booking Section -->
+    <section id="track" class="track-section">
+        <div class="container">
+            <h2>Track Your Booking</h2>
+            <div class="track-form-container">
+                <input type="text" id="bookingIdInput" placeholder="Enter Booking ID">
+                <button onclick="trackBooking()" class="track-btn">
+                    <i class="fas fa-search"></i> Track
+                </button>
+            </div>
+            <div id="bookingDetails" class="booking-details"></div>
+        </div>
+    </section>
+
+    <!-- Live Status Dashboard -->
+    <section id="status" class="status-section">
+        <div class="container">
+            <h2>Live Dashboard - Transparent Status</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-truck"></i>
+                    <h3 id="totalBookings">0</h3>
+                    <p>Total Bookings Today</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <h3 id="pendingBookings">0</h3>
+                    <p>Pending Deliveries</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3 id="completedBookings">0</h3>
+                    <p>Completed Today</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-road"></i>
+                    <h3 id="activeTankers">0</h3>
+                    <p>Active Tankers</p>
+                </div>
+            </div>
+            <div class="recent-bookings">
+                <h3>Recent Bookings</h3>
+                <div id="recentBookingsList" class="bookings-list"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Mira-Bhayandar Water Supply System. 
+            Bringing Transparency & Accountability to Water Delivery.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Support</a>
+                <a href="#"><i class="fas fa-phone"></i> 24x7 Helpline</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="WATER bookinh.js"></script>
+</body>
+</html>
